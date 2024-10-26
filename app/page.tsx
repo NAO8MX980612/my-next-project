@@ -1,49 +1,41 @@
 import styles from "./page.module.css";
 import Image from "next/image";
 import ButtonLink from "@/app/_components/ButtonLink";
-
-type News = {
-  id: string;
-  title: string;
-  category: {
-    name: string;
-  };
-  publishedAt: string;
-  createdAt: string;
-};
+import NewsList from "@/app/_components/NewsList";
+import { News } from "@/app/_libs/microcms";
 
 const data: {
-  contents: News[] 
+  contents: News[];
 } = {
   contents: [
     {
-      id: "1", 
-      title: "test", 
+      id: "1",
+      title: "test",
       category: {
-        name: "test", 
-      }, 
-      publishedAt: "2023/05/29", 
-      createdAt: "2023/05/29", 
-    }, 
+        name: "test",
+      },
+      publishedAt: "2023/05/29",
+      createdAt: "2023/05/29",
+    },
     {
-      id: "2", 
-      title: "test", 
+      id: "2",
+      title: "test",
       category: {
-        name: "test", 
-      }, 
-      publishedAt: "2023/05/29", 
-      createdAt: "2023/05/29", 
-    }, 
+        name: "test",
+      },
+      publishedAt: "2023/05/29",
+      createdAt: "2023/05/29",
+    },
     {
-      id: "3", 
-      title: "test", 
+      id: "3",
+      title: "test",
       category: {
-        name: "test", 
-      }, 
-      publishedAt: "2023/04/19", 
-      createdAt: "2023/04/19", 
-    }, 
-  ], 
+        name: "test",
+      },
+      publishedAt: "2023/04/19",
+      createdAt: "2023/04/19",
+    },
+  ],
 };
 
 export default function Home() {
@@ -66,37 +58,7 @@ export default function Home() {
       </section>
       <section className={styles.news}>
         <h2 className={styles.newsTitle}>News</h2>
-        <ul>
-          {sliceData.map((article) => (
-            <li key={article.id} className={styles.list}>
-              <div className={styles.link}>
-                <Image 
-                  className={styles.image} 
-                  src="/no-image.png" 
-                  alt="No Image" 
-                  width={1200} 
-                  height={630} 
-                />
-                <dl className={styles.content}>
-                  <dt className={styles.newsItemTitle}>{article.title}</dt>
-                  <dd className={styles.meta}>
-                    <span className={styles.tag}>{article.category.name}</span>
-                    <span className={styles.date}>
-                      <Image 
-                        src="/clock.svg" 
-                        alt="" 
-                        width={16} 
-                        height={16} 
-                        priority 
-                      />
-                      {article.publishedAt} 
-                    </span>
-                  </dd>
-                </dl>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <NewsList news={sliceData} />
         <div className={styles.newsLink}>
           <ButtonLink href="/news">もっとみる</ButtonLink>
         </div>
