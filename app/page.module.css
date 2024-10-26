@@ -138,3 +138,15 @@
   }
 
 }
+.newsLink {
+  position: absolute;
+  right: -40px;
+  bottom: -40px;
+}
+
+@media (max-width: 640px) {
+  .newsLink {
+    position: relative;
+    inset: 0;
+  }
+}
